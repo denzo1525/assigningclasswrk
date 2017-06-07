@@ -1,0 +1,50 @@
+{
+  "name": "Dejavu",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Hide content you have already seen on Facebook and Twitter",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus"
+  ],
+  "icons": {
+    "16": "img/icon_16.png",
+    "32": "img/icon_32.png",
+    "128": "img/icon_128.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "Hidden count",
+    "default_popup": "settings.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/"
+      ],
+      "js": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/arrive/minified/arrive.min.js",
+        "js/common.js",
+        "js/facebook.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://twitter.com/"
+      ],
+      "js": [
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/arrive/minified/arrive.min.js",
+        "js/common.js",
+        "js/twitter.js"
+      ]
+    }
+  ]
+}
